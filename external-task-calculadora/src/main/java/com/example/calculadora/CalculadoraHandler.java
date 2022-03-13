@@ -8,7 +8,7 @@ import org.camunda.bpm.engine.variable.VariableMap;
 import org.camunda.bpm.engine.variable.Variables;
 import org.springframework.stereotype.Component;
 
-@Component//o parametro abaixo da notação abaixo é o apontamento do nosso componente.
+@Component/*o parametro abaixo da notação abaixo é o apontamento para o tópico do nosso external task.*/
 @ExternalTaskSubscription("calculadora")
 public class CalculadoraHandler implements ExternalTaskHandler {
     @Override
@@ -40,7 +40,7 @@ public class CalculadoraHandler implements ExternalTaskHandler {
         /*O camunda possui uma classe estatica Variables que nos permite
         *criarmos uma mapa utilitários para criação de variáveis*/
         VariableMap variaveis = Variables.createVariables();
-        variaveis.put("restultado", result);
+        variaveis.put("resultado", result);
         externalTaskService.complete(externalTask, variaveis);
     }
 }
